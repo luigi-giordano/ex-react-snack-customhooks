@@ -1,12 +1,74 @@
-# React + Vite
+🏆 Snack 1: useSwitch() – Toggle Booleano
+Creare un custom hook per alternare un valore booleano tra true e false.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cosa deve fare?
 
-Currently, two official plugins are available:
+Inizialmente false.
+Ritorna il valore attuale e una funzione toggle() per cambiarlo.
+Quando toggle() viene chiamato, il valore passa da true → false e viceversa.
+Esempio di utilizzo:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+import useSwitch from "./useSwitch";
+​
+function App() {
+  const [isOn, toggle] = useSwitch();
+​
+  return (
+    <div>
+      <h1>Il valore è: {isOn ? "ON" : "OFF"}</h1>
+      <button onClick={toggle}>Cambia Stato</button>
+    </div>
+  );
+}
+​
+export default App;
+​
+🏆 Snack 2: useDate() – Ottenere la Data Attuale
+Creare un custom hook che restituisca la data e l'ora correnti, aggiornandosi automaticamente ogni secondo.
 
-## Expanding the ESLint configuration
+Cosa deve fare?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Restituisce un oggetto con data e ora formattata.
+Si aggiorna automaticamente ogni secondo.
+Usa useEffect() per gestire l’aggiornamento.
+Esempio di utilizzo:
+
+import useDate from "./useDate";
+​
+function App() {
+  const currentDate = useDate();
+​
+  return (
+    <div>
+      <h1>Data e ora attuali:</h1>
+      <p>{currentDate.toLocaleString()}</p>
+    </div>
+  );
+}
+​
+export default App;
+🏆 Snack 3: useCustomPointer() – Cambia il Cursore del Mouse
+Creare un custom hook che sostituisca il cursore del mouse con un componente personalizzato.
+
+Cosa deve fare?
+
+Prende in input una stringa o un JSX component (es. un’emoji, un'icona, un'animazione).
+Posiziona il componente al posto del puntatore del mouse.
+Il componente segue i movimenti del mouse.
+Esempio di utilizzo:
+
+import useCustomPointer from "./useCustomPointer";
+​
+function App() {
+  const customPointer = useCustomPointer("🔥");
+​
+  return (
+    <div>
+      <h1>Sposta il mouse per vedere il cursore personalizzato!</h1>
+      {customPointer}
+    </div>
+  );
+}
+​
+export default App;
+​
